@@ -1,23 +1,17 @@
+import 'react-native-gesture-handler';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { View, Text, StatusBar } from 'react-native';
-import { getStatusBarHeight} from 'react-native-status-bar-height'
+import firebase from './src/services/firebaseConnection'
+import {} from 'styled-components'
 
-import {Container, Titulo, Nome, BotaoSujeito, BotaoText} from './src/styles'
+import Routes from './src/routes/index'
 
-export default function App() {
+export default function MyFinances() {
  return (
-   <Container>
-
-    <StatusBar backgroundColor='#000000' barStyle="dark-content"/>
-
-    <Titulo>Eu</Titulo>
-    <Nome>Ola Fabricio</Nome>
-
-    <BotaoSujeito onPress={() => alert("CLICOU")}>
-      <BotaoText>Entrar</BotaoText>
-    </BotaoSujeito>
-
-   </Container>
+   <NavigationContainer>
+    <StatusBar backgroundColor="#131313" barStyle="dark-content"/>
+    <Routes/>
+   </NavigationContainer>
   );
 }
-
