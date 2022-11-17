@@ -31,9 +31,47 @@ function AppRoutes() {
 
         >
     
-            <AppDrawer.Screen name="Home" component={Home} />
-            <AppDrawer.Screen name="Registrar" component={New} />
-            <AppDrawer.Screen name="Perfil" component={Profile} />
+            <AppDrawer.Screen name="Home" component={Home} 
+            options={{
+                headerStyle:{
+                  backgroundColor: '#131313',
+                  borderBottomColor: '#00b94a', ///nao esta pegando
+                  borderBottomWidth: 0,
+                  shadowColor: 'transparent' //apagar a borda natural == 0
+                },
+                headerTintColor: '#FFF',
+                headerBackTitleVisible: false,
+                headerTitle: ''
+              }}
+            />
+
+            <AppDrawer.Screen name="Registrar" component={New} 
+            options={{
+                headerStyle:{
+                  backgroundColor: '#131313',
+                  borderBottomColor: '#00b94a', ///nao esta pegando
+                  borderBottomWidth: 0,
+                  shadowColor: 'transparent'
+                },
+                headerTintColor: '#FFF',
+                headerBackTitleVisible: false,
+                headerTitle: ''
+              }}
+            />
+
+            <AppDrawer.Screen name="Perfil" component={Profile} 
+            options={{
+                headerStyle:{
+                  backgroundColor: '#131313',
+                  borderBottomColor: '#00b94a', ///nao esta pegando
+                  borderBottomWidth: 0,
+                  shadowColor: 'transparent'
+                },
+                headerTintColor: '#FFF',
+                headerBackTitleVisible: false,
+                headerTitle: ''
+              }}
+            />
         </AppDrawer.Navigator>
     )
 }
