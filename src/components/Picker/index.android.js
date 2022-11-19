@@ -1,22 +1,22 @@
 import React from "react";
 import { Picker as RNPickerSelect } from '@react-native-community/picker'
 
-import {PickerView} from './styles'
+import { PickerView } from './styles'
 import { set } from "react-native-reanimated";
 
-export default function Picker({ onChange, tipo }){
-    return(
+export default function Picker({ onChange, tipo }) {
+    return (
         <PickerView>
             <RNPickerSelect
-            style={{
+                style={{
 
                     width: '100%'
-            }}
-            selectedValue={tipo}
-            onValueChange={ (valorSelecionado) => onChange(valorSelecionado)}
+                }}
+                selectedValue={tipo}
+                onValueChange={(valorSelecionado) => onChange(valorSelecionado)}
             >
-                <RNPickerSelect.Item  label="Receita" value="receita"/>
-                <RNPickerSelect.Item  label="Despesa" value="despesa"/>
+                <RNPickerSelect.Item label="Receita" value="receita" />
+                <RNPickerSelect.Item label="Despesa" value="despesa" />
             </RNPickerSelect>
         </PickerView>
     )
