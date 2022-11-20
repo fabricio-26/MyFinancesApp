@@ -22,7 +22,7 @@ function AuthRoutes() {
         options={{
           headerStyle:{
             backgroundColor: '#131313',
-            borderBottomWidth: 0,
+            borderBottomWidth: 1,
             borderBottomColor: '#00b94a', ///nao esta pegando
           },
           headerTintColor: '#FFF',
