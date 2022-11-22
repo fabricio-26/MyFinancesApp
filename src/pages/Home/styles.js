@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Background = styled.View`
 flex: 1;
-background-color: #131313;
+background-color: #4666FF;
 `;
 
 export const Container = styled.View`
@@ -33,7 +33,7 @@ export const List = styled.FlatList.attrs({
     marginHorizontal: 15
 })`
 padding-top: 15px;
-background-color: #fff;
+background-color: #000;
 border-top-left-radius: 15px;
 border-top-right-radius: 15px;
 margin-left: 8px;
@@ -45,4 +45,8 @@ flex-direction: row;
 margin-left: 15px;
 align-items: center;
 margin-bottom: 5px;
+`;
+
+export const Tipo = styled.View`
+background-color: red;
 `;

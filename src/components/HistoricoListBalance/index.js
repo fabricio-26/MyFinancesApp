@@ -6,7 +6,7 @@ import { Container, Tipo, IconView, TipoText, ValorText } from './styles'
 
 export default function HistoricoListBalance({ data, deleteItem }) {
   return (
-    <TouchableWithoutFeedback onLongPress={() => deleteItem(data)}>
+    <TouchableWithoutFeedback  onLongPress={() => deleteItem(data)}>
       <Container>
         <Tipo>
           <IconView tipo={data.tipo}>
