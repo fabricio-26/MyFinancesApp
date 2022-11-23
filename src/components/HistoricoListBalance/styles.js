@@ -6,7 +6,7 @@ margin-left: 10px;
 margin-right: 10px;
 padding: 10px;
 box-shadow: 2px 2px rgba(0,0,0, 0.40);
-background-color: #fff;
+background-color: #303030;
 border-radius: 5px;
 `
 
@@ -31,7 +31,7 @@ font-style: italic;
 `
 
 export const ValorText = styled.Text`
-color: #222;
+color: #fff;
 font-size: 22px;
 font-weight: bold;
 `

@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Alert, Platform, TouchableOpacity } from 'react-native';
+import { Alert, Text, Platform, TouchableOpacity, View } from 'react-native';
 import firebase from '../../services/firebaseConnection';
 import { format, isBefore } from 'date-fns';
 
 import HistoricoListBalance from '../../components/HistoricoListBalance';
 import DatePicker from '../../components/DatePicker';
 import { AuthContext } from '../../contexts/auth'
+import SlideCarteiras from '../../components/SlideCarteiras'
 
-import { Background, Container, Nome, Saldo, Title, List, Area } from './styles'
+import { Background, Container, Nome, Saldo, Title, List, Area,TitleBalance, TitleCard } from './styles'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { onChange } from 'deprecated-react-native-prop-types/DeprecatedTextInputPropTypes';
 
 export default function Home() {
   const [historico, setHistorico] = useState([])
@@ -117,12 +117,25 @@ export default function Home() {
     setNewDate(date)
   }
 
+
+
   return (
-    <Background>
+      <Background>
       <Container>
         <Nome>{user && user.nome}</Nome>
+        <View style={{marginTop: 35, padding: 20}}>
+        <TitleBalance>Balance</TitleBalance>
         <Saldo>R$ {saldo.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Saldo>
+        </View>
       </Container>
+
+      <TitleCard>
+        Carteiras
+      </TitleCard>
+
+      <View>
+      <SlideCarteiras/>
+      </View>
 
       <Area>
         <TouchableOpacity onPress={handleShowPicker}>
@@ -145,6 +158,8 @@ export default function Home() {
         onChange={onChange}
         />
       )}
+
+  
 
     </Background>
   );

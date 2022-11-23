@@ -25,23 +25,27 @@ const icons = {
 }
 
 
-function Tabs() {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          const { name } = icons[route.name];
-          return <Icon name={name} color={color} size={size} />
-        }
-      })}
-    >
-      <Tab.Screen name="Home" component={Home} options={{ headerShown: false}}/>
-      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false}}/>
-      <Tab.Screen name="New" component={New} options={{ headerShown: false}}/>
-    </Tab.Navigator>
+// function Tabs() {
+//   return (
+//     <Tab.Navigator
+//       screenOptions={({ route }) => ({
+//         tabBarIcon: ({ color, size }) => {
+//           const { name } = icons[route.name];
+//           return <Icon name={name} color={color} size={size} />
+//         },
+//         tabBarStyle:{
+//           backgroundColor: '#000',
+//           borderTopColor: '#00b94a',
+//         }
+//       })}
+//     >
+//       <Tab.Screen name="Home" component={Home} options={{ headerShown: false}}/>
+//       <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false}}/>
+//       <Tab.Screen name="New" component={New} options={{ headerShown: false}}/>
+//     </Tab.Navigator>
 
-  )
-}
+//   )
+// }
 
 
 
@@ -71,17 +75,21 @@ function AppRoutes() {
 
     >
 
-      <AppDrawer.Screen name="Home" component={Tabs}
+      <AppDrawer.Screen name="Home" component={Home}
         options={{
           headerStyle: {
-            backgroundColor: '#131313',
+            backgroundColor: '#000',
             borderBottomColor: '#00b94a', ///nao esta pegando
             borderBottomWidth: 0,
-            shadowColor: 'transparent' //apagar a borda natural == 0
+            shadowColor: 'transparent',
+            fontWeight: 'bold'
+            
           },
           headerTintColor: '#FFF',
           headerBackTitleVisible: false,
-          headerTitle: ''
+          headerTitle: 'Carteira',
+          headerTitleAlign: 'center',
+          
         }}
       />
 
@@ -90,8 +98,8 @@ function AppRoutes() {
           headerStyle: {
             backgroundColor: '#131313',
             borderBottomColor: '#00b94a', ///nao esta pegando
-            borderBottomWidth: 0,
-            shadowColor: 'transparent'
+            borderBottomWidth: 1,
+      
           },
           headerTintColor: '#FFF',
           headerBackTitleVisible: false,
