@@ -8,7 +8,7 @@ import DatePicker from '../../components/DatePicker';
 import { AuthContext } from '../../contexts/auth'
 import SlideCarteiras from '../../components/SlideCarteiras'
 
-import { Background, Container, Nome, Saldo, Title, List, Area,TitleBalance, TitleCard } from './styles'
+import { Background, Container, Nome, Saldo, Title, List, Area, TitleBalance, TitleCard, BoasVindas } from './styles'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 export default function Home() {
@@ -37,6 +37,7 @@ export default function Home() {
             let list = {
               key: childItem.key,
               tipo: childItem.val().tipo,
+              descricao: childItem.val().descricao,
               valor: childItem.val().valor,
               date: childItem.val().date
             };
@@ -104,11 +105,11 @@ export default function Home() {
       })
   }
 
-  function handleShowPicker(){
+  function handleShowPicker() {
     setShowCalendar(true)
   }
 
-  function handleClose(){
+  function handleClose() {
     setShowCalendar(false)
   }
 
@@ -120,12 +121,15 @@ export default function Home() {
 
 
   return (
-      <Background>
+    <Background>
       <Container>
+        <BoasVindas>
+        <Text style={{color:'#fff'}}>Olá, </Text>
         <Nome>{user && user.nome}</Nome>
-        <View style={{marginTop: 35, padding: 20}}>
-        <TitleBalance>Balance</TitleBalance>
-        <Saldo>R$ {saldo.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Saldo>
+        </BoasVindas>
+        <View style={{ padding: 20 }}>
+          <TitleBalance>Balance</TitleBalance>
+          <Saldo>R$ {saldo.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Saldo>
         </View>
       </Container>
 
@@ -134,7 +138,7 @@ export default function Home() {
       </TitleCard>
 
       <View>
-      <SlideCarteiras/>
+        <SlideCarteiras />
       </View>
 
       <Area>
@@ -153,13 +157,13 @@ export default function Home() {
 
       {showCalendar && (
         <DatePicker
-        onClose={handleClose}
-        date={newDate}
-        onChange={onChange}
+          onClose={handleClose}
+          date={newDate}
+          onChange={onChange}
         />
       )}
 
-  
+
 
     </Background>
   );

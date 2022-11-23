@@ -8,10 +8,17 @@ background-color: #000;
 export const Container = styled.View`
 margin-left: 15px;
 margin-right: 15px;
-margin-bottom: 25px;
-height: 175px;
+margin-bottom: 10px;
+height: 150px;
 border-radius: 20px;
 background-color: #303030;
+`;
+
+export const BoasVindas = styled.Text`
+flex-direction: row;
+font-size: 19px;
+padding-left: 20px;
+padding-top: 15px;
 `;
 
 export const Nome = styled.Text`
@@ -38,6 +45,7 @@ font-weight: 300;
 export const Title = styled.Text`
 margin-left: 5px;
 color: #00b94a;
+font-size: 20px;
 margin-bottom: 10px;
 `;
 

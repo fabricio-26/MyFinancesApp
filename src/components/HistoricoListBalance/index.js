@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'
 
-import { Container, Tipo, IconView, TipoText, ValorText } from './styles'
+import { Container, Tipo, IconView, TipoText, ValorText, DateMov } from './styles'
 
 export default function HistoricoListBalance({ data, deleteItem }) {
   return (
-    <TouchableWithoutFeedback  onLongPress={() => deleteItem(data)}>
+    <TouchableWithoutFeedback onLongPress={() => deleteItem(data)}>
       <Container>
         <Tipo>
           <IconView tipo={data.tipo}>
@@ -17,9 +17,10 @@ export default function HistoricoListBalance({ data, deleteItem }) {
             />
             <TipoText>{data.tipo}</TipoText>
           </IconView>
+          <DateMov>{data.date}</DateMov>
         </Tipo>
         <ValorText>
-          R$ {data.valor}
+          R$ {data.valor} - {data.descricao}
         </ValorText>
       </Container>
     </TouchableWithoutFeedback>

@@ -3,7 +3,7 @@ import { SafeAreaView, Keyboard, TouchableWithoutFeedback, Alert } from 'react-n
 import { format } from 'date-fns';
 import { useNavigation } from '@react-navigation/native';
 import firebase from '../../services/firebaseConnection';
-import {AuthContext} from '../../contexts/auth'
+import { AuthContext } from '../../contexts/auth'
 
 import { Background, Input, SubmitButton, SubmitText } from './styles'
 import Picker from '../../components/Picker';
@@ -12,12 +12,13 @@ export default function New() {
   const navigation = useNavigation()
 
   const [valor, setValor] = useState('')
+  const [descricao, setDescricao] = useState('')
   const [tipo, setTipo] = useState('receita')
-  const { user: usuario} = useContext(AuthContext)
+  const { user: usuario } = useContext(AuthContext)
 
   function handleSubmit() {
     Keyboard.dismiss()
-    if (isNaN(parseFloat(valor)) || tipo === null) {
+    if (isNaN(parseFloat(valor)) || tipo === null || descricao === null) {
       alert('Preencha todos os campos!')
       return;
     }
@@ -32,26 +33,28 @@ export default function New() {
         },
         {
           text: 'Continuar',
-          onPress: ()=> handleAdd()
+          onPress: () => handleAdd()
         }
       ]
     )
+    setDescricao('')
 
   }
 
-  async function handleAdd(){
+  async function handleAdd() {
     let uid = usuario.uid
 
     let key = await firebase.database().ref('historico').child(uid).push().key; //gerar chave aleatoria e armazenando dentro dessa key
     await firebase.database().ref('historico').child(uid).child(key).set({
       tipo: tipo,
+      descricao: descricao,
       valor: parseFloat(valor),
       date: format(new Date(), 'dd/MM/yyyy')
     })
 
     //Atualizar o nosso saldo
     let user = firebase.database().ref('users').child(uid)
-    await user.once('value').then((snapshot)=> {
+    await user.once('value').then((snapshot) => {
       let saldo = parseFloat(snapshot.val().saldo)
 
       tipo === 'despesa' ? saldo -= parseFloat(valor) : saldo += parseFloat(valor)
@@ -71,6 +74,16 @@ export default function New() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Background>
         <SafeAreaView style={{ alignItems: 'center' }}>
+
+        <Input
+            placeholder='Descrição'
+            returnKeyType="next"
+            onSubmitEditing={() => Keyboard.dismiss()}
+            value={descricao}
+            onChangeText={(text) => setDescricao(text)}
+          />
+
+
           <Input
             placeholder='Valor desejado'
             keyboardType="numeric"

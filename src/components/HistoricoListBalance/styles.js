@@ -12,6 +12,7 @@ border-radius: 5px;
 
 export const Tipo = styled.View`
 flex-direction: row;
+justify-content: space-between;
 `
 
 export const IconView = styled.View`
@@ -27,6 +28,12 @@ border-radius:  7px;
 export const TipoText = styled.Text`
 color: #fff;
 font-size: 16px;
+font-style: italic;
+`
+
+export const DateMov = styled.Text`
+color: #ccc;
+font-size: 14px;
 font-style: italic;
 `
 
